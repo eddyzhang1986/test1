@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
-import "./Analysis.css";
+//import "./Analysis.css";
 import {
   Col,
   Dropdown,
@@ -108,7 +108,7 @@ const Cards = props => {
     marginBottom: "20px"
   };
   return (
-    <Card>
+    <Card style={{ margin: "10px" }}>
       <Card.Grid style={gridStyle}>
         <div style={{ backgroundColor: "#1564D8" }}>
           <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
@@ -162,44 +162,55 @@ const Overview = props => {
 
       <Row gutter={[8, 8]} style={{ padding: "10px" }}>
         <Col span={12}>
-          <div>
-            <List
-              header={
-                <Text strong>
-                  <Divider
-                    type="vertical"
-                    style={{ backgroundColor: "#1564D8", width: "5px" }}
-                  />
-                  邀请榜
-                </Text>
-              }
-              size="small"
-              dataSource={["1", "5"]}
-              renderItem={item => <List.Item>{item}</List.Item>}
-            ></List>
-          </div>
+          <List
+            style={{
+              border: "1px solid #ebedf0",
+              paddingLeft: "10px",
+              paddingRight: "10px",
+              minHeight: "222px"
+            }}
+            header={
+              <Text strong>
+                <Divider
+                  type="vertical"
+                  style={{ backgroundColor: "#1564D8", width: "5px" }}
+                />
+                邀请榜
+              </Text>
+            }
+            size="small"
+            dataSource={["1", "5"]}
+            renderItem={item => <List.Item>{item}</List.Item>}
+          />
         </Col>
         <Col span={12}>
-          <div>
-            <List
-              header={
-                <Text strong>
-                  <Divider
-                    type="vertical"
-                    style={{ backgroundColor: "#1564D8", width: "5px" }}
-                  />
-                  土豪榜
-                </Text>
-              }
-              size="small"
-              dataSource={[]}
-              renderItem={item => <List.Item>{item}</List.Item>}
-            ></List>
-          </div>
+          <List
+            style={{
+              border: "1px solid #ebedf0",
+              paddingLeft: "10px",
+              paddingRight: "10px",
+              minHeight: "222px"
+            }}
+            header={
+              <Text strong>
+                <Divider
+                  type="vertical"
+                  style={{ backgroundColor: "#1564D8", width: "5px" }}
+                />
+                土豪榜
+              </Text>
+            }
+            size="small"
+            dataSource={[]}
+            renderItem={item => <List.Item>{item}</List.Item>}
+          />
         </Col>
       </Row>
 
-      <Row gutter={[8, 8]} style={{ padding: "10px" }}>
+      <Row
+        gutter={[8, 8]}
+        style={{ margin: "10px", border: "1px solid #ebedf0" }}
+      >
         <Col span={24}>
           <Text strong>
             <Divider
@@ -300,7 +311,13 @@ export default class Analysis extends React.Component {
     return (
       <div style={{ margin: "20px", border: "1px solid #ebedf0" }}>
         <Row style={{ padding: "10px" }}>
-          <Text strong>社群榜</Text>
+          <Text strong>
+            <Divider
+              type="vertical"
+              style={{ backgroundColor: "#1564D8", width: "5px" }}
+            />
+            社群榜
+          </Text>
         </Row>
         <Divider style={{ margin: "0px auto" }} />
         <Row style={{ padding: "10px" }}>
