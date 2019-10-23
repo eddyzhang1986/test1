@@ -15,7 +15,8 @@ import {
   Table,
   Typography,
   Card,
-  List
+  List,
+  Button
 } from "antd";
 import axios from "axios";
 
@@ -155,32 +156,49 @@ const Cards = props => {
 };
 const Chart = props => {
   const [data, setData] = useState([820, 932, 901, 934, 1290, 1330, 1320]);
-  useEffect(() => {
+  const loadData = () => {
     axios.get("/getChartData.api").then(resp => {
       setData(oldData => {
-        //alert(JSON.stringify(resp));
+        console.log(oldData);
         return resp.data;
       });
     });
-  }, data);
+  };
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
-    <ReactEcharts
-      option={{
-        xAxis: {
-          type: "category",
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-        },
-        yAxis: {
-          type: "value"
-        },
-        series: [
-          {
-            data: data,
-            type: "line"
-          }
-        ]
-      }}
-    />
+    <>
+      <Row>
+        <Col push={20}>
+          <Button
+            onClick={() => {
+              loadData();
+            }}
+          >
+            刷新
+          </Button>
+        </Col>
+      </Row>
+      <ReactEcharts
+        option={{
+          xAxis: {
+            type: "category",
+            data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+          },
+          yAxis: {
+            type: "value"
+          },
+          series: [
+            {
+              data: data,
+              type: "line"
+            }
+          ]
+        }}
+      />
+    </>
   );
 };
 
