@@ -10,7 +10,8 @@ import {
   Divider,
   Select,
   Radio,
-  Empty
+  Empty,
+  Tabs
 } from "antd";
 
 import ReactEcharts from "echarts-for-react";
@@ -22,6 +23,7 @@ import icon4 from "../assets/analysis-icon-4.png";
 import icon5 from "../assets/analysis-icon-5.png";
 
 const { Option } = Select;
+const { TabPane } = Tabs;
 
 const Panel = props => {
   const { value, onChange } = props;
@@ -166,7 +168,18 @@ const Overview = props => {
 };
 
 const Details = props => {
-  return <div>详细</div>;
+  return (
+    <div>
+      <Tabs defaultActiveKey="1">
+        <TabPane tab="活跃的群(0)" key="1">
+          Content of Tab Pane 1
+        </TabPane>
+        <TabPane tab="未活跃的群(0)" key="2">
+          Content of Tab Pane 2
+        </TabPane>
+      </Tabs>
+    </div>
+  );
 };
 
 export default class Analysis extends React.Component {
