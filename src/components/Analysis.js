@@ -12,7 +12,10 @@ import {
   Radio,
   Empty,
   Tabs,
-  Table
+  Table,
+  Typography,
+  Card,
+  List
 } from "antd";
 
 import ReactEcharts from "echarts-for-react";
@@ -25,16 +28,21 @@ import icon5 from "../assets/analysis-icon-5.png";
 
 const { Option } = Select;
 const { TabPane } = Tabs;
+const { Text } = Typography;
 
 const Panel = props => {
   const { value, onChange } = props;
   const { group, time, view } = value;
 
+  const size = "small";
+
   return (
-    <div>
-      <Row>
-        群组筛选
+    <>
+      <Row style={{ height: "32px", lineHeight: "32px" }}>
+        <Text>群组筛选:</Text>
+        &nbsp;&nbsp;
         <Select
+          size={size}
           style={{ width: 120 }}
           value={group}
           onChange={v => {
@@ -49,9 +57,11 @@ const Panel = props => {
           <Option value="1">默认分组</Option>
         </Select>
       </Row>
-      <Row>
-        选择时间
+      <Row style={{ height: "32px", lineHeight: "32px" }}>
+        <Text>选择时间:</Text>
+        &nbsp;&nbsp;
         <Radio.Group
+          size={size}
           value={time}
           onChange={e => {
             if (onChange) {
@@ -66,9 +76,11 @@ const Panel = props => {
           <Radio.Button value="thirtydays">近30天</Radio.Button>
         </Radio.Group>
       </Row>
-      <Row>
-        视图
+      <Row style={{ height: "32px", lineHeight: "32px" }}>
+        <Text>视图:</Text>
+        &nbsp;&nbsp;
         <Radio.Group
+          size={size}
           value={view}
           onChange={e => {
             if (onChange) {
@@ -81,68 +93,99 @@ const Panel = props => {
           <Radio.Button value="details">明细</Radio.Button>
         </Radio.Group>
       </Row>
-    </div>
+    </>
+  );
+};
+
+const Cards = props => {
+  const gridStyle = {
+    width: "20%",
+    textAlign: "center",
+    padding: "5px"
+  };
+  const imgStyle = {
+    marginTop: "20px",
+    marginBottom: "20px"
+  };
+  return (
+    <Card>
+      <Card.Grid style={gridStyle}>
+        <div style={{ backgroundColor: "#1564D8" }}>
+          <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
+            社群总数[查看详情]
+            <img src={icon1} alt="" style={imgStyle} />
+          </div>
+        </div>
+      </Card.Grid>
+      <Card.Grid style={gridStyle}>
+        <div style={{ backgroundColor: "#33AA44" }}>
+          <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
+            社群总数[查看详情]
+            <img src={icon2} alt="" style={imgStyle} />
+          </div>
+        </div>
+      </Card.Grid>
+      <Card.Grid style={gridStyle}>
+        <div style={{ backgroundColor: "#F6AC30" }}>
+          <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
+            社群总数[查看详情]
+            <img src={icon3} alt="" style={imgStyle} />
+          </div>
+        </div>
+      </Card.Grid>
+      <Card.Grid style={gridStyle}>
+        <div style={{ backgroundColor: "#6758F3" }}>
+          <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
+            社群总数[查看详情]
+            <img src={icon4} alt="" style={imgStyle} />
+          </div>
+        </div>
+      </Card.Grid>
+      <Card.Grid style={gridStyle}>
+        <div style={{ backgroundColor: "#FCC80D" }}>
+          <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
+            社群总数[查看详情]
+            <img src={icon5} alt="" style={imgStyle} />
+          </div>
+        </div>
+      </Card.Grid>
+    </Card>
   );
 };
 
 const Overview = props => {
   return (
     <>
-      <Row gutter={[8, 8]}>
-        <Col span={5}>
-          <div style={{ backgroundColor: "#1564D8" }}>
-            <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
-              社群总数[查看详情]
-              <img src={icon1} alt="" />
-            </div>
-          </div>
-        </Col>
-        <Col span={5}>
-          <div style={{ backgroundColor: "#33AA44" }}>
-            <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
-              社群总数[查看详情]
-              <img src={icon2} alt="" />
-            </div>
-          </div>
-        </Col>
-        <Col span={5}>
-          <div style={{ backgroundColor: "#F6AC30" }}>
-            <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
-              社群总数[查看详情]
-              <img src={icon3} alt="" />
-            </div>
-          </div>
-        </Col>
-        <Col span={5}>
-          <div style={{ backgroundColor: "#6758F3" }}>
-            <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
-              社群总数[查看详情]
-              <img src={icon4} alt="" />
-            </div>
-          </div>
-        </Col>
-        <Col span={4}>
-          <div style={{ backgroundColor: "#FCC80D" }}>
-            <div style={{ fontSize: "14px", fontWeight: 400, color: "#fff" }}>
-              社群总数[查看详情]
-              <img src={icon5} alt="" />
-            </div>
-          </div>
-        </Col>
+      <Row>
+        <Cards />
       </Row>
-      <Row gutter={[8, 8]}>
-        <Col span={12}>
-          <div>邀请榜</div>
-          <Empty />
-        </Col>
-        <Col span={12}>
-          <div>土豪榜</div>
-          <Empty />
-        </Col>
-      </Row>
+      <div>
+        <Row gutter={[8, 8]}>
+          <Col span={12}>
+            <div>
+              <List
+                header={<div>Header</div>}
+                size="small"
+                dataSource={["1", "5"]}
+                renderItem={item => <List.Item>{item}</List.Item>}
+              ></List>
+            </div>
+          </Col>
+          <Col span={12}>
+            <div>
+              <List
+                header={<div>Header</div>}
+                size="small"
+                dataSource={[]}
+                renderItem={item => <List.Item>{item}</List.Item>}
+              ></List>
+            </div>
+          </Col>
+        </Row>
+      </div>
       <Row gutter={[8, 8]}>
         <Col span={24}>
-          <div>时段详情</div>
+          {/* <div>时段详情</div>
           <div>
             <ReactEcharts
               option={{
@@ -161,7 +204,7 @@ const Overview = props => {
                 ]
               }}
             />
-          </div>
+          </div> */}
         </Col>
       </Row>
     </>
@@ -229,23 +272,23 @@ export default class Analysis extends React.Component {
     const { condition } = this.state;
     const { group, time, view } = condition;
     return (
-      <div>
-        <div style={{ fontSize: "14px", fontWeight: 700 }}>社群榜</div>
-        <Divider />
-        <div>
-          <Row>
-            <Panel
-              value={condition}
-              onChange={c => {
-                console.log(c);
-                this.setState({
-                  condition: c
-                });
-              }}
-            />
-          </Row>
-        </div>
-        <Divider />
+      <div style={{ margin: "20px", border: "1px solid #ebedf0" }}>
+        <Row style={{ padding: "10px" }}>
+          <Text strong>社群榜</Text>
+        </Row>
+        <Divider style={{ margin: "0px auto" }} />
+        <Row style={{ padding: "10px" }}>
+          <Panel
+            value={condition}
+            onChange={c => {
+              console.log(c);
+              this.setState({
+                condition: c
+              });
+            }}
+          />
+        </Row>
+        <Divider style={{ margin: "0px auto" }} />
         <div>{view === "overview" ? <Overview /> : <Details />}</div>
       </div>
     );
