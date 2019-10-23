@@ -159,52 +159,72 @@ const Overview = props => {
       <Row>
         <Cards />
       </Row>
-      <div>
-        <Row gutter={[8, 8]}>
-          <Col span={12}>
-            <div>
-              <List
-                header={<div>Header</div>}
-                size="small"
-                dataSource={["1", "5"]}
-                renderItem={item => <List.Item>{item}</List.Item>}
-              ></List>
-            </div>
-          </Col>
-          <Col span={12}>
-            <div>
-              <List
-                header={<div>Header</div>}
-                size="small"
-                dataSource={[]}
-                renderItem={item => <List.Item>{item}</List.Item>}
-              ></List>
-            </div>
-          </Col>
-        </Row>
-      </div>
-      <Row gutter={[8, 8]}>
-        <Col span={24}>
-          {/* <div>时段详情</div>
+
+      <Row gutter={[8, 8]} style={{ padding: "10px" }}>
+        <Col span={12}>
           <div>
-            <ReactEcharts
-              option={{
-                xAxis: {
-                  type: "category",
-                  data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-                },
-                yAxis: {
-                  type: "value"
-                },
-                series: [
-                  {
-                    data: [820, 932, 901, 934, 1290, 1330, 1320],
-                    type: "line"
-                  }
-                ]
-              }}
+            <List
+              header={
+                <Text strong>
+                  <Divider
+                    type="vertical"
+                    style={{ backgroundColor: "#1564D8", width: "5px" }}
+                  />
+                  邀请榜
+                </Text>
+              }
+              size="small"
+              dataSource={["1", "5"]}
+              renderItem={item => <List.Item>{item}</List.Item>}
+            ></List>
+          </div>
+        </Col>
+        <Col span={12}>
+          <div>
+            <List
+              header={
+                <Text strong>
+                  <Divider
+                    type="vertical"
+                    style={{ backgroundColor: "#1564D8", width: "5px" }}
+                  />
+                  土豪榜
+                </Text>
+              }
+              size="small"
+              dataSource={[]}
+              renderItem={item => <List.Item>{item}</List.Item>}
+            ></List>
+          </div>
+        </Col>
+      </Row>
+
+      <Row gutter={[8, 8]} style={{ padding: "10px" }}>
+        <Col span={24}>
+          <Text strong>
+            <Divider
+              type="vertical"
+              style={{ backgroundColor: "#1564D8", width: "5px" }}
             />
-          </div> */}
+            时段详情
+          </Text>
+          <ReactEcharts
+            option={{
+              xAxis: {
+                type: "category",
+                data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+              },
+              yAxis: {
+                type: "value"
+              },
+              series: [
+                {
+                  data: [820, 932, 901, 934, 1290, 1330, 1320],
+                  type: "line"
+                }
+              ]
+            }}
+          />
         </Col>
       </Row>
     </>
@@ -214,36 +234,42 @@ const Overview = props => {
 const Details = props => {
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name"
+      title: "微信群",
+      dataIndex: "group"
     },
     {
-      title: "Age",
-      dataIndex: "age"
+      title: "总发言数",
+      dataIndex: "totalmessage"
     },
     {
-      title: "Address",
-      dataIndex: "address"
+      title: "活跃人数",
+      dataIndex: "livecount"
+    },
+    {
+      title: "总人数",
+      dataIndex: "totalperson"
+    },
+    {
+      title: "进群人数",
+      dataIndex: "enterperson"
     }
   ];
   const data = [
     {
       key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park"
+      group: "群组1",
+      totalmessage: 32,
+      livecount: 12,
+      totalperson: 12,
+      enterperson: 12
     },
     {
       key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park"
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sidney No. 1 Lake Park"
+      group: "群组2",
+      totalmessage: 32,
+      livecount: 12,
+      totalperson: 12,
+      enterperson: 12
     }
   ];
   return (
