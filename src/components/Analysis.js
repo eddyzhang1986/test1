@@ -11,7 +11,8 @@ import {
   Select,
   Radio,
   Empty,
-  Tabs
+  Tabs,
+  Table
 } from "antd";
 
 import ReactEcharts from "echarts-for-react";
@@ -168,14 +169,48 @@ const Overview = props => {
 };
 
 const Details = props => {
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name"
+    },
+    {
+      title: "Age",
+      dataIndex: "age"
+    },
+    {
+      title: "Address",
+      dataIndex: "address"
+    }
+  ];
+  const data = [
+    {
+      key: "1",
+      name: "John Brown",
+      age: 32,
+      address: "New York No. 1 Lake Park"
+    },
+    {
+      key: "2",
+      name: "Jim Green",
+      age: 42,
+      address: "London No. 1 Lake Park"
+    },
+    {
+      key: "3",
+      name: "Joe Black",
+      age: 32,
+      address: "Sidney No. 1 Lake Park"
+    }
+  ];
   return (
     <div>
       <Tabs defaultActiveKey="1">
         <TabPane tab="活跃的群(0)" key="1">
-          Content of Tab Pane 1
+          <Table columns={columns} dataSource={data} size="middle" />
         </TabPane>
         <TabPane tab="未活跃的群(0)" key="2">
-          Content of Tab Pane 2
+          <Table columns={columns} dataSource={data} size="middle" />
         </TabPane>
       </Tabs>
     </div>
