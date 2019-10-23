@@ -1,0 +1,20 @@
+[class~="ant-col"] {
+  background: transparent;
+  border: 0;
+}
+[class~="ant-col"] > div {
+  /* background: #00a0e9; */
+  height: 120px;
+  line-height: 120px;
+  font-size: 13px;
+}
+pre {
+  background: #f9f9f9;
+  border-radius: 6px;
+  font-size: 13px;
+  padding: 8px 16px;
+}
+
+/* body {
+  background-color: #00a0e9;
+} */
