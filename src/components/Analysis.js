@@ -156,9 +156,10 @@ const Cards = props => {
 const Chart = props => {
   const [data, setData] = useState([820, 932, 901, 934, 1290, 1330, 1320]);
   useEffect(() => {
-    axios.get("/abc.api").then(resp => {
+    axios.get("/getChartData.api").then(resp => {
       setData(oldData => {
-        return resp;
+        //alert(JSON.stringify(resp));
+        return resp.data;
       });
     });
   }, data);
