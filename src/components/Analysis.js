@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 //import "./Analysis.css";
 import {
@@ -17,6 +17,7 @@ import {
   Card,
   List
 } from "antd";
+import axios from "axios";
 
 import ReactEcharts from "echarts-for-react";
 
@@ -152,6 +153,35 @@ const Cards = props => {
     </Card>
   );
 };
+const Chart = props => {
+  const [data, setData] = useState([820, 932, 901, 934, 1290, 1330, 1320]);
+  useEffect(() => {
+    axios.get("/abc.api").then(resp => {
+      setData(oldData => {
+        return resp;
+      });
+    });
+  }, data);
+  return (
+    <ReactEcharts
+      option={{
+        xAxis: {
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        },
+        yAxis: {
+          type: "value"
+        },
+        series: [
+          {
+            data: data,
+            type: "line"
+          }
+        ]
+      }}
+    />
+  );
+};
 
 const Overview = props => {
   return (
@@ -219,23 +249,7 @@ const Overview = props => {
             />
             时段详情
           </Text>
-          <ReactEcharts
-            option={{
-              xAxis: {
-                type: "category",
-                data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-              },
-              yAxis: {
-                type: "value"
-              },
-              series: [
-                {
-                  data: [820, 932, 901, 934, 1290, 1330, 1320],
-                  type: "line"
-                }
-              ]
-            }}
-          />
+          <Chart />
         </Col>
       </Row>
     </>
