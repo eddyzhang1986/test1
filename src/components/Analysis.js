@@ -317,7 +317,7 @@ const Details = props => {
     }
   ];
   return (
-    <div>
+    <>
       <Tabs defaultActiveKey="1">
         <TabPane tab="活跃的群(0)" key="1">
           <Table columns={columns} dataSource={data} size="middle" />
@@ -326,7 +326,7 @@ const Details = props => {
           <Table columns={columns} dataSource={data} size="middle" />
         </TabPane>
       </Tabs>
-    </div>
+    </>
   );
 };
 
@@ -365,7 +365,7 @@ export default class Analysis extends React.Component {
           />
         </Row>
         <Divider style={{ margin: "0px auto" }} />
-        <div>{view === "overview" ? <Overview /> : <Details />}</div>
+        <Row>{view === "overview" ? <Overview /> : <Details />}</Row>
       </div>
     );
   }
